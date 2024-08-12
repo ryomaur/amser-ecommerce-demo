@@ -31,9 +31,9 @@ const ImageUploadWidget: React.FC<ImageUploadWidgetProps> = ({
   }
 
   return (
-    <div className="flex flex-col justify-center items-center gap-5">
+    <div className="flex flex-col items-center justify-center gap-5">
       <CldUploadWidget
-        uploadPreset="voviurq0"
+        signatureEndpoint={"/api/sign-image"}
         onSuccess={onSuccess}
         options={{ multiple: false }}
       >
@@ -47,7 +47,7 @@ const ImageUploadWidget: React.FC<ImageUploadWidgetProps> = ({
                 }, 1000);
               }}
               disabled={disabled}
-              className="relative w-[150px] h-[150px] rounded-lg overflow-hidden flex flex-col gap-2 items-center justify-center border-2 border-foreground text-foreground text-sm font-semibold"
+              className="relative flex h-[150px] w-[150px] flex-col items-center justify-center gap-2 overflow-hidden rounded-lg border-2 border-foreground text-sm font-semibold text-foreground"
             >
               {imageSrc === "" || !imageSrc ? (
                 <>
