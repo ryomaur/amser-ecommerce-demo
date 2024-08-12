@@ -1,0 +1,241 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id String @id @default(cuid())
+
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  scope             String?
+  id_token          String  @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id String @id @default(cuid())
+
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id String @id @default(cuid())
+
+  email          String?    @unique
+  username       String?
+  isAdmin        Boolean    @default(false)
+  hashedPassword String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  accounts       Account[]
+  sessions       Session[]
+  reviews        Review[]
+  cart           Cart[]
+  orders         Order[]
+  Wishlist       Wishlist[]
+}
+
+model Product {
+  id String @id @default(cuid())
+
+  name            String
+  description     String
+  productType     String
+  price           Int
+  stock           Int
+  mainImage       String
+  image           String?
+  movement        String?
+  movement_ja     String?
+  caseType        String?
+  caseType_ja     String?
+  caseColor       String?
+  caseColor_ja    String?
+  caseWidth       Float?
+  caseLength      Float?
+  caseThickness   Float?
+  waterResistance Int?
+  faceColor       String?
+  faceColor_ja    String?
+  weight          Int?
+  bandType        String?
+  bandType_ja     String?
+  isHidden        Boolean        @default(false)
+  reviews         Review[]
+  CartItem        CartItem[]
+  OrderItem       OrderItem[]
+  WishlistItem    WishlistItem[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model Review {
+  id String @id @default(cuid())
+
+  userId    String
+  productId String
+  title     String
+  content   String
+  rating    Int
+  isEdited  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Cart {
+  id String @id @default(cuid())
+
+  userId    String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  items     CartItem[]
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CartItem {
+  id String @id @default(cuid())
+
+  cartId    String
+  productId String
+  quantity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cart    Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id String @id @default(cuid())
+
+  userId     String
+  status     String
+  orderItems OrderItem[]
+  totalPrice Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model OrderItem {
+  id String @id @default(cuid())
+
+  orderId   String
+  productId String
+  quantity  Int
+  price     Int
+  createdAt DateTime @default(now())
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+}
+
+model Wishlist {
+  id String @id @default(cuid())
+
+  userId    String?
+  isPublic  Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user          User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wishlistItems WishlistItem[]
+}
+
+model WishlistItem {
+  id String @id @default(cuid())
+
+  wishlistId String
+  productId  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  wishlist Wishlist @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  product  Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Movement {
+  id String @id @default(cuid())
+
+  value   String @unique
+  name_ja String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BandType {
+  id String @id @default(cuid())
+
+  value   String @unique
+  name_ja String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CaseType {
+  id String @id @default(cuid())
+
+  value           String @unique
+  name_ja         String @unique
+  caseWidth       Float
+  caseLength      Float
+  caseThickness   Float
+  waterResistance Int
+  weight          Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CaseColor {
+  id String @id @default(cuid())
+
+  value    String @unique
+  name_ja  String @unique
+  hexValue String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FaceColor {
+  id String @id @default(cuid())
+
+  value    String @unique
+  name_ja  String @unique
+  hexValue String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
