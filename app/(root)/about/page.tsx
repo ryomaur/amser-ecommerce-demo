@@ -29,6 +29,7 @@ const BrandPage = () => {
                 alt="オフィス画像"
                 width={736}
                 height={300}
+                quality={100}
                 className="rounded-lg object-contain"
               />
             </div>
@@ -59,6 +60,7 @@ const BrandPage = () => {
               alt="デザイン"
               width={384}
               height={720}
+              quality={100}
               className="slide-left-animation"
             />
           </div>
@@ -71,7 +73,7 @@ const BrandPage = () => {
               alt="ムーブメント"
               width={480}
               height={720}
-              quality={99}
+              quality={100}
               className="slide-right-animation"
             />
             <div className="flex max-w-96 flex-col gap-5">
