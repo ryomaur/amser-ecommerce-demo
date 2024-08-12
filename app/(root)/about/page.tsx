@@ -23,7 +23,9 @@ const BrandPage = () => {
           <div className="mx-auto max-w-[928px] overflow-x-visible rounded-xl bg-foreground p-8 shadow-md md:rounded-[1.875rem] md:p-24">
             <div className="flex justify-center">
               <Image
-                src={"/assets/about/building.png"}
+                src={
+                  "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723473002/Amser/About/gdxwartzfdbugxx1lcti.webp"
+                }
                 alt="オフィス画像"
                 width={736}
                 height={300}
@@ -51,7 +53,9 @@ const BrandPage = () => {
             </div>
 
             <Image
-              src={"/assets/about/design.png"}
+              src={
+                "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723473002/Amser/About/mwecrvwwy4qrhrzivjei.webp"
+              }
               alt="デザイン"
               width={384}
               height={720}
@@ -61,7 +65,9 @@ const BrandPage = () => {
 
           <div className="mt-32 flex w-full flex-col items-center justify-center gap-8 md:gap-20 lg:flex-row">
             <Image
-              src={"/assets/about/movement.png"}
+              src={
+                "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723473002/Amser/About/qupldgdiez7xj6tfasqz.webp"
+              }
               alt="ムーブメント"
               width={480}
               height={720}

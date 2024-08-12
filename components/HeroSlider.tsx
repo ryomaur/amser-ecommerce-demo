@@ -17,8 +17,10 @@ const featuredProducts = [
     caseWidth: "38.5mm",
     weight: "83g",
     movement: "MECHANICAL",
-    desktopImageSrc: "/assets/home/hero/SN-02B-promotion-wide.png.webp",
-    mobileImageSrc: "/assets/home/hero/SN-02B-promotion-alt.png.webp",
+    desktopImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472692/Amser/Home/hero/lsuapzmdopkbp4mba1pa.webp",
+    mobileImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472691/Amser/Home/hero/qcqil3zigiwln73e04jf.webp",
 
     textColor: "xl:text-[#505050]",
     mobileTextColor: "text-[#dddddd]",
@@ -37,8 +39,10 @@ const featuredProducts = [
     caseWidth: "39.5mm",
     weight: "102g",
     movement: "AUTOMATIC",
-    desktopImageSrc: "/assets/home/hero/CG-02L-promotion-wide.png.webp",
-    mobileImageSrc: "/assets/home/hero/CG-02L-promotion.png.webp",
+    desktopImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472690/Amser/Home/hero/lyrvyfrrys1iuyw8uoda.webp",
+    mobileImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472690/Amser/Home/hero/lx31014h1v9rvauuttwl.webp",
 
     textColor: "xl:text-[#505050]",
     mobileTextColor: "text-[#505050]",
@@ -57,8 +61,8 @@ const featuredProducts = [
   //   caseWidth: "39.5mm",
   //   weight: "102g",
   //   movement: "AUTOMATIC",
-  //   desktopImageSrc: "/assets/home/hero/CS-03B-promotion-wide.png.webp",
-  //   mobileImageSrc: "/assets/home/hero/CS-03B-promotion.png.webp",
+  //   desktopImageSrc: "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472692/Amser/Home/hero/zwshtps1aidm6bsyv4ae.webp",
+  //   mobileImageSrc: "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472692/Amser/Home/hero/uggq51wbmysxxiawfwsv.webp",
 
   //   textColor: "xl:text-foreground",
   //   mobileTextColor: "text-foreground",
@@ -77,8 +81,10 @@ const featuredProducts = [
     caseWidth: "38mm",
     weight: "152g",
     movement: "AUTOMATIC",
-    desktopImageSrc: "/assets/home/hero/DS-01DB3-promotion-wide.png.webp",
-    mobileImageSrc: "/assets/home/hero/DS-01DB3-promotion.png.webp",
+    desktopImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472690/Amser/Home/hero/og6r9jc5w0khpgv3drw0.webp",
+    mobileImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472690/Amser/Home/hero/wfrwf25ceguymmr2rvo6.webp",
 
     textColor: "xl:text-[#dddddd]",
     mobileTextColor: "text-[#dddddd]",
@@ -97,8 +103,10 @@ const featuredProducts = [
     caseWidth: "39.5mm",
     weight: "102g",
     movement: "AUTOMATIC",
-    desktopImageSrc: "/assets/home/hero/CN-02DG2-promotion-wide.png.webp",
-    mobileImageSrc: "/assets/home/hero/CN-02DG2-promotion.png.webp",
+    desktopImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472690/Amser/Home/hero/yybgjac2tucb8gimnqhn.webp",
+    mobileImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472692/Amser/Home/hero/swcn8iovuv9b0in3dyf3.webp",
 
     textColor: "xl:text-[#dddddd]",
     mobileTextColor: "text-[#dddddd]",
@@ -117,8 +125,10 @@ const featuredProducts = [
     caseWidth: "39.5mm",
     weight: "102g",
     movement: "AUTOMATIC",
-    desktopImageSrc: "/assets/home/hero/CS-05L5-promotion-wide.png.webp",
-    mobileImageSrc: "/assets/home/hero/CS-05L5-promotion.png.webp",
+    desktopImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472690/Amser/Home/hero/lkxth58bt4burzbrhmlh.webp",
+    mobileImageSrc:
+      "https://res.cloudinary.com/dve4hcdfo/image/upload/v1723472692/Amser/Home/hero/wdmuddmbyofl3amocsu8.webp",
 
     textColor: "xl:text-[#dddddd]",
     mobileTextColor: "text-[#dddddd]",
@@ -147,32 +157,23 @@ const HeroSlider = () => {
       }}
       loop
       slidesPerView={1}
-      className="w-full flex justify-center items-center"
+      className="flex w-full items-center justify-center"
     >
       {featuredProducts.map((featuredProduct, i) => (
         <SwiperSlide key={i}>
           <Link
             href={featuredProduct.url}
-            className="w-full flex items-center justify-center relative max-h-[calc(100vh-56px)]"
+            className="relative flex max-h-[calc(100vh-56px)] w-full items-center justify-center"
           >
             <HeroSliderImage
               desktopImageSrc={featuredProduct.desktopImageSrc}
               mobileImageSrc={featuredProduct.mobileImageSrc}
             />
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-              <div className="w-full h-full flex justify-between max-w-[1920px] p-3 xs:p-5 md:p-16">
-                <div className="w-full h-full hidden xs:flex">
+            <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+              <div className="flex h-full w-full max-w-[1920px] justify-between p-3 xs:p-5 md:p-16">
+                <div className="hidden h-full w-full xs:flex">
                   <p
-                    className={`
-                        block 
-                        text-[0.688rem] 
-                        md:text-sm 
-                        font-mono 
-                        self-end 
-                        ${featuredProduct.textColor} 
-                        ${featuredProduct.mobileTextColor} 
-                        leading-none
-                      `}
+                    className={`block self-end font-mono text-[0.688rem] md:text-sm ${featuredProduct.textColor} ${featuredProduct.mobileTextColor} leading-none`}
                   >
                     NAME: {featuredProduct.name}
                     <br />
@@ -185,35 +186,14 @@ const HeroSlider = () => {
                     MOVEMENT: {featuredProduct.movement}
                   </p>
                 </div>
-                <div className="w-full h-full flex justify-end items-end">
-                  <div
-                    className={`
-                      flex 
-                      flex-col 
-                      justify-end 
-                      gap-3 
-                      h-full 
-                      `}
-                  >
-                    <div className="flex items-center gap-2 xs:gap-3 self-end">
+                <div className="flex h-full w-full items-end justify-end">
+                  <div className={`flex h-full flex-col justify-end gap-3`}>
+                    <div className="flex items-center gap-2 self-end xs:gap-3">
                       {featuredProducts.map((_current, currentIndex) => (
                         <button
-                          className={`
-                            rounded-full  
-                            w-2 
-                            md:w-3 
-                            h-2 
-                            md:h-3 
-                            border 
-                            md:border-2
-                            ${featuredProduct.borderColor}
-                            ${featuredProduct.mobileBorderColor}
-                            ${
-                              currentIndex === i &&
-                              featuredProduct.mobileBgColor
-                            }
-                            ${currentIndex === i && featuredProduct.bgColor}
-                          `}
+                          className={`h-2 w-2 rounded-full border md:h-3 md:w-3 md:border-2 ${featuredProduct.borderColor} ${featuredProduct.mobileBorderColor} ${
+                            currentIndex === i && featuredProduct.mobileBgColor
+                          } ${currentIndex === i && featuredProduct.bgColor} `}
                           key={currentIndex}
                           onClick={() => {
                             swiperInstance?.slideToLoop(currentIndex);
