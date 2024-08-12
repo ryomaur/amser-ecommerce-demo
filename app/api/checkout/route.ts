@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     if (!session) {
       return NextResponse.json(
         { message: "認証されていません" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
         {
           message: "認証されていません。ログインしてください",
         },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -53,14 +53,14 @@ export async function POST(req: Request) {
       if (!product) {
         return NextResponse.json(
           { message: "商品が見つかりません" },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
       if (product.stock < item.quantity) {
         return NextResponse.json(
           { message: "商品の在庫がありません" },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
 
     const totalPrice = items.reduce(
       (acc, item) => acc + item.product.price * item.quantity,
-      0
+      0,
     );
 
     const order = await prisma.order.create({
@@ -114,8 +114,8 @@ export async function POST(req: Request) {
       mode: "payment",
       expires_at: Math.floor(Date.now() / 1000) + 1800,
       billing_address_collection: "required",
-      success_url: `${process.env.FRONTEND_URL}/checkout/success`,
-      cancel_url: `${process.env.FRONTEND_URL}/checkout/canceled`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/canceled`,
       metadata: {
         orderId: order.id,
       },
@@ -133,7 +133,7 @@ export async function POST(req: Request) {
   } catch (error) {
     return NextResponse.json(
       { message: "エラーが発生しました" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
