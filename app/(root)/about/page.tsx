@@ -30,6 +30,7 @@ const BrandPage = () => {
                 width={736}
                 height={300}
                 quality={100}
+                sizes="60vw"
                 className="rounded-lg object-contain"
               />
             </div>
@@ -61,6 +62,7 @@ const BrandPage = () => {
               width={384}
               height={720}
               quality={100}
+              sizes="(max-width: 768px) 90vw, 50vw"
               className="slide-left-animation"
             />
           </div>
@@ -74,6 +76,7 @@ const BrandPage = () => {
               width={480}
               height={720}
               quality={100}
+              sizes="(max-width: 768px) 90vw, 50vw"
               className="slide-right-animation"
             />
             <div className="flex max-w-96 flex-col gap-5">
