@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const items: CartItemWithProduct[] = body.items;
+    const items: CartItemWithProduct[] = await body.items;
 
     if (!items || items.length === 0) {
       return new NextResponse("購入する商品が必要です", { status: 400 });
