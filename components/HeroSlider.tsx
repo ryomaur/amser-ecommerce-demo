@@ -31,7 +31,7 @@ const featuredProducts = [
     borderColor: "xl:border-[#505050]",
     mobileBorderColor: "border-[#dddddd]",
 
-    url: "/products/",
+    url: "/products/clzsjg61t003wllok415eajzz",
   },
   {
     name: "CG-02L",
@@ -53,7 +53,7 @@ const featuredProducts = [
     borderColor: "xl:border-[#505050]",
     mobileBorderColor: "border-[#505050]",
 
-    url: "/products/",
+    url: "/products/clzsjt1qp0043llokq1fe3tsh",
   },
   // {
   //   name: "CS-03B",
@@ -73,7 +73,7 @@ const featuredProducts = [
   //   borderColor: "xl:border-foreground",
   //   mobileBorderColor: "border-foreground",
 
-  //   url: "/products/",
+  //   url: "/products/clzs2yoxw001bllokcjetpuoo",
   // },
   {
     name: "DS-01DB3",
@@ -95,7 +95,7 @@ const featuredProducts = [
     borderColor: "xl:border-[#dddddd]",
     mobileBorderColor: "border-[#dddddd]",
 
-    url: "/products/",
+    url: "/products/clzsjla1u003zllokzx43aogr",
   },
   {
     name: "CN-02DG2",
@@ -117,7 +117,7 @@ const featuredProducts = [
     borderColor: "xl:border-[#dddddd]",
     mobileBorderColor: "border-[#dddddd]",
 
-    url: "/products/",
+    url: "/products/clzsjpta00041llokd1h5ig3a",
   },
   {
     name: "CS-05L5",
@@ -139,7 +139,7 @@ const featuredProducts = [
     borderColor: "xl:border-[#dddddd]",
     mobileBorderColor: "border-[#dddddd]",
 
-    url: "/products/",
+    url: "/products/clzsjb3er003vllokc5uafh63",
   },
 ];
 
