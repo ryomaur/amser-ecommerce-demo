@@ -7,12 +7,6 @@ import { CartItemWithProduct } from "@/actions/cart";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
-};
-
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
@@ -115,6 +109,8 @@ export async function POST(req: Request) {
       },
     });
 
+    console.log(line_items);
+
     const stripeSession = await stripe.checkout.sessions.create({
       line_items,
       mode: "payment",
@@ -133,14 +129,9 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json(
-      {
-        url: stripeSession.url,
-      },
-      {
-        headers: corsHeaders,
-      },
-    );
+    return NextResponse.json({
+      url: stripeSession.url,
+    });
   } catch (error) {
     return NextResponse.json(
       { message: "エラーが発生しました" },
