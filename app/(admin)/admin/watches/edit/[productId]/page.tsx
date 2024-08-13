@@ -22,7 +22,7 @@ const EditWatchPage: React.FC<EditWatchPageProps> = async ({ params }) => {
     return <div>ERROR</div>;
   }
 
-  const res = await fetch("http://localhost:3000/api/categories", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
     cache: "no-store",
   });
 

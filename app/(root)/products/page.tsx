@@ -19,7 +19,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
 
   const productsData = await getProducts(searchParams, pageSize);
   const categoriesResponse = await fetch(
-    "http://localhost:3000/api/categories",
+    `${process.env.NEXT_PUBLIC_API_URL}/categories`,
     {
       cache: "no-store",
     },

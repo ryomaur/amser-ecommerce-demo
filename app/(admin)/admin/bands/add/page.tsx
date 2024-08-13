@@ -2,7 +2,7 @@ import React from "react";
 import AddBandForm from "./components/AddBandForm";
 
 const AddBandPage = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
     cache: "no-store",
   });
 

@@ -11,7 +11,7 @@ interface EditBandPageProps {
 
 const EditBandPage: React.FC<EditBandPageProps> = async ({ params }) => {
   const product = await getProductById(params);
-  const res = await fetch("http://localhost:3000/api/categories", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
     cache: "no-store",
   });
 

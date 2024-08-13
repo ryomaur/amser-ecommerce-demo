@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
 
 const AdminCategoriesPage = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
     cache: "no-store",
   });
 

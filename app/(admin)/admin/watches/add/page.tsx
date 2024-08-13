@@ -2,7 +2,7 @@ import React from "react";
 import AddWatchForm from "./components/AddWatchForm";
 
 const AddWatchPage = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
     cache: "no-store",
   });
 
