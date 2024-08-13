@@ -10,7 +10,7 @@ export const metadata = {
 
 const SuccessPage = () => {
   return (
-    <section className="h-[80vh] w-full md:h-full">
+    <section className="h-[80vh] w-full">
       <div className="flex h-full w-full flex-col items-center justify-center gap-5 p-8 text-foreground md:p-0">
         <h1 className="text-center text-xl font-semibold md:text-3xl">
           ご注文が
