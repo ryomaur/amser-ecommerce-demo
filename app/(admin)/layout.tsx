@@ -25,7 +25,7 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  // metadataBase: new URL(""),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL as string),
   title: "Amser 管理者ページ",
   description: "Amser公式サイトの管理者ページ",
   openGraph: {

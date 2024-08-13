@@ -26,7 +26,7 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  // metadataBase: new URL(""),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL as string),
   title: "Amser 腕時計 | Amser 公式webサイト",
   description: "Amserウォッチの公式ウェブサイトです。",
   openGraph: {
