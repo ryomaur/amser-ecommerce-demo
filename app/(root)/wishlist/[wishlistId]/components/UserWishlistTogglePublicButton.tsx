@@ -19,7 +19,7 @@ const UserWishlistTogglePublicButton: React.FC<
 
   const handleClick = async () => {
     await navigator.clipboard.writeText(window.location.href);
-    alert("text copied");
+    toast.success("リンクをコピーしました");
   };
 
   useEffect(() => {
