@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const items: CartItemWithProduct[] = await body.items;
+    const items: CartItemWithProduct[] = body.items;
 
     if (!items || items.length === 0) {
       return new NextResponse("購入する商品が必要です", { status: 400 });
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
 
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
 
-    items.forEach(async (item) => {
+    for (let item of items) {
       const product = await prisma.product.findUnique({
         where: {
           id: item.productId,
@@ -74,9 +74,9 @@ export async function POST(req: Request) {
           unit_amount: product.price,
         },
       });
-    });
+    }
 
-    items.forEach(async (item) => {
+    for (let item of items) {
       await prisma.product.update({
         where: {
           id: item.productId,
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
           },
         },
       });
-    });
+    }
 
     const totalPrice = items.reduce(
       (acc, item) => acc + item.product.price * item.quantity,
