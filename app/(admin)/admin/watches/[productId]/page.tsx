@@ -39,9 +39,17 @@ const AdminWatchDetailPage: React.FC<AdminWatchDetailPageProps> = async ({
               <div className="text-sm">商品名：</div>
               <div>{product.name}</div>
             </div>
-            <div className="flex items-center gap-5 text-sm">
-              <div className="text-sm">商品概要：</div>
+            <div className="flex gap-5 text-sm">
+              <div className="text-nowrap text-sm">商品概要：</div>
               <div>{product.description}</div>
+            </div>
+            <div className="flex items-center gap-5 text-sm">
+              <div className="text-sm">価格：</div>
+              <div>{product.price}</div>
+            </div>
+            <div className="flex items-center gap-5 text-sm">
+              <div className="text-sm">ムーブメント：</div>
+              <div>{product.movement_ja}</div>
             </div>
             <div className="flex items-center gap-5 text-sm">
               <div className="text-sm">ケース：</div>
