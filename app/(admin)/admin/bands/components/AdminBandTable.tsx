@@ -74,6 +74,7 @@ const AdminBandTable: React.FC<AdminBandsTableProps> = ({ bands }) => {
             src={info.getValue()}
             alt="商品画像"
             fill
+            sizes="5vh"
             className="object-cover"
           />
         </div>
