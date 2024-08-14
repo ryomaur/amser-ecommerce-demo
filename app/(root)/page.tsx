@@ -10,7 +10,7 @@ const getNewProducts = async () => {
       productType: "watch",
     },
     orderBy: {
-      updatedAt: "desc",
+      createdAt: "desc",
     },
     take: 8,
   });
