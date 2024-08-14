@@ -63,7 +63,7 @@ const Navbar = async () => {
         </div>
       </header>
 
-      <header className="fixed top-0 z-50 h-[3.25rem] w-full bg-[rgba(0,0,0,0.75)] px-5 font-sans shadow-lg backdrop-blur-lg sm:h-14 sm:px-6 lg:hidden">
+      <header className="fixed top-0 z-50 h-[3.25rem] w-full bg-[rgba(0,0,0,0.75)] px-5 font-sans backdrop-blur-lg sm:h-14 sm:px-6 lg:hidden">
         <div className="flex h-full w-full items-center justify-between">
           <Link href={"/"} className="hover:opacity-70">
             <Image
