@@ -32,7 +32,7 @@ const getAllOrders = async () => {
     },
   });
 
-  revalidatePath("/admin/users");
+  revalidatePath("/admin/orders");
   return orders;
 };
 
