@@ -14,7 +14,7 @@ export interface IProductsParams {
 
 export default async function getProducts(
   params: IProductsParams,
-  pageSize: number
+  pageSize: number,
 ) {
   const {
     productType,
@@ -29,16 +29,16 @@ export default async function getProducts(
   } = params;
 
   let orderBy: any = {
-    updatedAt: "desc",
+    createdAt: "desc",
   };
 
   if (sort === "newest") {
     orderBy = {
-      updatedAt: "desc",
+      createdAt: "desc",
     };
   } else if (sort === "oldest") {
     orderBy = {
-      updatedAt: "asc",
+      createdAt: "asc",
     };
   } else if (sort === "price-low-high") {
     orderBy = {
