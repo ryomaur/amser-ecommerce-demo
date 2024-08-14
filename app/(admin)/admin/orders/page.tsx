@@ -1,6 +1,7 @@
 import prisma from "@/lib/db";
 import AdminOrdersClient from "./components/AdminOrdersClient";
 import { Prisma } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 export type OrderWithUser = Prisma.OrderGetPayload<{
   include: {
@@ -14,7 +15,8 @@ export type OrderWithUser = Prisma.OrderGetPayload<{
   };
 }>;
 
-const AdminOrdersPage = async () => {
+const getAllOrders = async () => {
+  "use server";
   const orders = await prisma.order.findMany({
     orderBy: {
       updatedAt: "desc",
@@ -29,6 +31,13 @@ const AdminOrdersPage = async () => {
       },
     },
   });
+
+  revalidatePath("/admin/users");
+  return orders;
+};
+
+const AdminOrdersPage = async () => {
+  const orders = await getAllOrders();
 
   return (
     <>
