@@ -20,7 +20,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
   const searchParams = useSearchParams();
   const params = useMemo(
     () => new URLSearchParams(searchParams),
-    [searchParams]
+    [searchParams],
   );
 
   const { caseTypes, caseColors, faceColors, movements, bandTypes } =
@@ -35,23 +35,23 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
   const [stockOpen, setStockOpen] = useState(false);
 
   const [movement, setMovement] = useState<string[]>(
-    params.get("movement")?.toString().split(",") ?? []
+    params.get("movement")?.toString().split(",") ?? [],
   );
   const [caseType, setCaseType] = useState<string[]>(
-    params.get("caseType")?.toString().split(",") ?? []
+    params.get("caseType")?.toString().split(",") ?? [],
   );
   const [caseColor, setCaseColor] = useState<string[]>(
-    params.get("caseColor")?.toString().split(",") ?? []
+    params.get("caseColor")?.toString().split(",") ?? [],
   );
   const [faceColor, setFaceColor] = useState<string[]>(
-    params.get("faceColor")?.toString().split(",") ?? []
+    params.get("faceColor")?.toString().split(",") ?? [],
   );
   const [bandType, setBandType] = useState<string[]>(
-    params.get("bandType")?.toString().split(",") ?? []
+    params.get("bandType")?.toString().split(",") ?? [],
   );
 
   const [instock, setInstock] = useState<boolean>(
-    params.get("instock") ? true : false
+    params.get("instock") ? true : false,
   );
 
   const sort = params.get("sort");
@@ -66,7 +66,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
         caseColor.length +
         faceColor.length +
         bandType.length +
-        (instock ? 1 : 0)
+        (instock ? 1 : 0),
     );
 
     if (movement.length > 0) {
@@ -118,7 +118,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
   const handleSelect = (
     setState: (newArray: string[]) => void,
     state: string[],
-    newValue: string
+    newValue: string,
   ) => {
     if (state.includes(newValue)) {
       const newArray = state.filter((value) => value !== newValue);
@@ -155,13 +155,13 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
 
   return (
     <>
-      <div className="main-container mx-auto flex md:justify-between md:items-center flex-col md:flex-row items-end px-4 md:px-5 xl:px-0 gap-3 md:gap-0">
+      <div className="main-container mx-auto flex flex-col items-end gap-3 px-4 md:flex-row md:items-center md:justify-between md:gap-0 md:px-5 xl:px-0">
         <button
           onClick={() => setOpenFilter((prev) => !prev)}
           className={
             openFilter
-              ? `py-2 px-5 rounded-lg font-medium flex items-center gap-2 bg-[#d9d9d9] relative text-sm md:text-base`
-              : `py-2 px-5 rounded-lg font-medium flex items-center gap-2 hover:bg-[#d9d9d9] relative text-sm md:text-base`
+              ? `relative flex items-center gap-2 rounded-lg bg-[#d9d9d9] px-5 py-2 text-sm font-medium md:text-base`
+              : `relative flex items-center gap-2 rounded-lg px-5 py-2 text-sm font-medium hover:bg-[#d9d9d9] md:text-base`
           }
         >
           絞り込み{" "}
@@ -171,7 +171,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
             <BiFilterAlt className="text-lg md:text-xl" />
           )}
           {filterCount > 0 && (
-            <div className="bg-red w-[1.125rem] h-[1.125rem] md:w-5 md:h-5 rounded-full absolute right-0 top-0  md:right-1 md:top-1 flex items-center justify-center text-center text-background text-[0.625rem] md:text-xs">
+            <div className="absolute right-0 top-0 flex h-[1.125rem] w-[1.125rem] items-center justify-center rounded-full bg-red text-center text-[0.625rem] text-background md:right-1 md:top-1 md:h-5 md:w-5 md:text-xs">
               {filterCount}
             </div>
           )}
@@ -179,14 +179,14 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
         <div>
           <label
             htmlFor="sort"
-            className="font-medium mr-7 text-sm md:text-base"
+            className="mr-7 text-sm font-medium md:text-base"
           >
             並び替え
           </label>
           <select
             name="sort"
             id="sort"
-            className="bg-transparent focus:outline-none outline-none text-sm md:text-base"
+            className="bg-transparent text-sm outline-none focus:outline-none md:text-base"
             onChange={(e) => onSort(e.target.value)}
             defaultValue={sort || "newest"}
           >
@@ -199,43 +199,43 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
       </div>
 
       {openFilter && (
-        <div className="hidden xl:block w-full bg-bglighter mt-8">
+        <div className="mt-8 hidden w-full bg-bglighter xl:block">
           <div className="main-container py-8">
             <Tab.Group>
               <Tab.List className="flex justify-center gap-16">
                 {productType === "watch" && (
                   <>
-                    <Tab className="border-b-[3px] border-transparent ui-selected:border-b-[3px] ui-selected:border-foreground p-2 font-medium relative">
+                    <Tab className="relative border-b-[3px] border-transparent p-2 font-medium ui-selected:border-b-[3px] ui-selected:border-foreground">
                       ムーブメント
                       {movement.length > 0 && (
-                        <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-0 right-[-0.875rem]">
+                        <div className="absolute right-[-0.875rem] top-0 flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                           {movement.length}
                         </div>
                       )}
                     </Tab>
 
-                    <Tab className="border-b-[3px] border-transparent ui-selected:border-b-[3px] ui-selected:border-foreground p-2 font-medium relative">
+                    <Tab className="relative border-b-[3px] border-transparent p-2 font-medium ui-selected:border-b-[3px] ui-selected:border-foreground">
                       ケースの種類
                       {caseType.length > 0 && (
-                        <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-0 right-[-0.875rem]">
+                        <div className="absolute right-[-0.875rem] top-0 flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                           {caseType.length}
                         </div>
                       )}
                     </Tab>
 
-                    <Tab className="border-b-[3px] border-transparent ui-selected:border-b-[3px] ui-selected:border-foreground p-2 font-medium relative">
+                    <Tab className="relative border-b-[3px] border-transparent p-2 font-medium ui-selected:border-b-[3px] ui-selected:border-foreground">
                       ケースの色
                       {caseColor.length > 0 && (
-                        <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-0 right-[-0.875rem]">
+                        <div className="absolute right-[-0.875rem] top-0 flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                           {caseColor.length}
                         </div>
                       )}
                     </Tab>
 
-                    <Tab className="border-b-[3px] border-transparent ui-selected:border-b-[3px] ui-selected:border-foreground p-2 font-medium relative">
+                    <Tab className="relative border-b-[3px] border-transparent p-2 font-medium ui-selected:border-b-[3px] ui-selected:border-foreground">
                       文字盤の色
                       {faceColor.length > 0 && (
-                        <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-0 right-[-0.875rem]">
+                        <div className="absolute right-[-0.875rem] top-0 flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                           {faceColor.length}
                         </div>
                       )}
@@ -244,9 +244,9 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                 )}
 
                 {productType === "watch" || productType === "band" ? (
-                  <Tab className="border-b-[3px] border-transparent ui-selected:border-b-[3px] ui-selected:border-foreground p-2 font-medium relative">
+                  <Tab className="relative border-b-[3px] border-transparent p-2 font-medium ui-selected:border-b-[3px] ui-selected:border-foreground">
                     {bandType.length > 0 && (
-                      <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-0 right-[-0.875rem]">
+                      <div className="absolute right-[-0.875rem] top-0 flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                         {bandType.length}
                       </div>
                     )}
@@ -254,10 +254,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                   </Tab>
                 ) : null}
 
-                <Tab className="border-b-[3px] border-transparent ui-selected:border-b-[3px] ui-selected:border-foreground p-2 font-medium relative">
+                <Tab className="relative border-b-[3px] border-transparent p-2 font-medium ui-selected:border-b-[3px] ui-selected:border-foreground">
                   在庫状況
                   {instock && (
-                    <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-0 right-[-0.875rem]">
+                    <div className="absolute right-[-0.875rem] top-0 flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                       1
                     </div>
                   )}
@@ -271,13 +271,11 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                         {movements.map((data) => (
                           <button
                             key={data.value}
-                            className={`
-                        text-sm py-5 px-12 shadow-sm rounded-lg
-                      ${
-                        movement.includes(data.value)
-                          ? "bg-foreground text-background"
-                          : "bg-background text-foreground"
-                      }`}
+                            className={`rounded-lg px-12 py-5 text-sm shadow-sm ${
+                              movement.includes(data.value)
+                                ? "bg-foreground text-background"
+                                : "bg-background text-foreground"
+                            }`}
                             onClick={() =>
                               handleSelect(setMovement, movement, data.value)
                             }
@@ -293,13 +291,11 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                         {caseTypes.map((data) => (
                           <button
                             key={data.value}
-                            className={`
-                        text-sm py-5 px-12 shadow-sm rounded-lg
-                      ${
-                        caseType.includes(data.value)
-                          ? "bg-foreground text-background"
-                          : "bg-background text-foreground"
-                      }`}
+                            className={`rounded-lg px-12 py-5 text-sm shadow-sm ${
+                              caseType.includes(data.value)
+                                ? "bg-foreground text-background"
+                                : "bg-background text-foreground"
+                            }`}
                             onClick={() =>
                               handleSelect(setCaseType, caseType, data.value)
                             }
@@ -315,30 +311,22 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                         {caseColors.map((data) => (
                           <button
                             key={data.value}
-                            className={`
-                        text-sm py-5 px-12 shadow-sm rounded-lg flex justify-center items-center gap-4
-                      ${
-                        caseColor.includes(data.value)
-                          ? "bg-foreground text-background"
-                          : "bg-background text-foreground"
-                      }`}
+                            className={`flex items-center justify-center gap-4 rounded-lg px-12 py-5 text-sm shadow-sm ${
+                              caseColor.includes(data.value)
+                                ? "bg-foreground text-background"
+                                : "bg-background text-foreground"
+                            }`}
                             onClick={() =>
                               handleSelect(setCaseColor, caseColor, data.value)
                             }
                           >
                             {data.name_ja}
                             <div
-                              className={`
-                                  w-6
-                                  h-6
-                                  rounded-full
-                                  border-2
-                                  ${
-                                    caseColor.includes(data.value)
-                                      ? "border-background"
-                                      : "border-foreground"
-                                  }
-                                `}
+                              className={`h-6 w-6 rounded-full border-2 ${
+                                caseColor.includes(data.value)
+                                  ? "border-background"
+                                  : "border-foreground"
+                              } `}
                               style={{ backgroundColor: data.hexValue }}
                             />
                           </button>
@@ -347,34 +335,26 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     </Tab.Panel>
 
                     <Tab.Panel>
-                      <div className="flex items-center justify-center gap-8 flex-wrap">
+                      <div className="flex flex-wrap items-center justify-center gap-8">
                         {faceColors.map((data) => (
                           <button
                             key={data.value}
-                            className={`
-                        text-sm py-5 px-12 shadow-sm rounded-lg flex justify-center items-center gap-4
-                      ${
-                        faceColor.includes(data.value)
-                          ? "bg-foreground text-background"
-                          : "bg-background text-foreground"
-                      }`}
+                            className={`flex items-center justify-center gap-4 rounded-lg px-12 py-5 text-sm shadow-sm ${
+                              faceColor.includes(data.value)
+                                ? "bg-foreground text-background"
+                                : "bg-background text-foreground"
+                            }`}
                             onClick={() =>
                               handleSelect(setFaceColor, faceColor, data.value)
                             }
                           >
                             {data.name_ja}
                             <div
-                              className={`
-                                  w-6
-                                  h-6
-                                  rounded-full
-                                  border-2
-                                  ${
-                                    faceColor.includes(data.value)
-                                      ? "border-background"
-                                      : "border-foreground"
-                                  }
-                                `}
+                              className={`h-6 w-6 rounded-full border-2 ${
+                                faceColor.includes(data.value)
+                                  ? "border-background"
+                                  : "border-foreground"
+                              } `}
                               style={{ backgroundColor: data.hexValue }}
                             />
                           </button>
@@ -390,13 +370,11 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                       {bandTypes.map((data) => (
                         <button
                           key={data.value}
-                          className={`
-                        text-sm py-5 px-12 shadow-sm rounded-lg
-                      ${
-                        bandType.includes(data.value)
-                          ? "bg-foreground text-background"
-                          : "bg-background text-foreground"
-                      }`}
+                          className={`rounded-lg px-12 py-5 text-sm shadow-sm ${
+                            bandType.includes(data.value)
+                              ? "bg-foreground text-background"
+                              : "bg-background text-foreground"
+                          }`}
                           onClick={() =>
                             handleSelect(setBandType, bandType, data.value)
                           }
@@ -411,9 +389,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                 <Tab.Panel>
                   <div className="flex items-center justify-center gap-8">
                     <button
-                      className={`
-                        text-sm py-5 px-12 shadow-sm rounded-lg
-                      ${
+                      className={`rounded-lg px-12 py-5 text-sm shadow-sm ${
                         instock
                           ? "bg-foreground text-background"
                           : "bg-background text-foreground"
@@ -427,15 +403,15 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
               </Tab.Panels>
             </Tab.Group>
 
-            <div className="flex justify-center mt-12 gap-16">
+            <div className="mt-12 flex justify-center gap-16">
               <button
-                className="font-semibold border-2 border-red px-10 py-2 rounded-full text-red"
+                className="rounded-full border-2 border-red px-10 py-2 font-semibold text-red"
                 onClick={() => onReset()}
               >
                 リセット
               </button>
               <button
-                className="font-semibold border-2 border-foreground px-10 py-2 rounded-full bg-foreground text-bglighter "
+                className="rounded-full border-2 border-foreground bg-foreground px-10 py-2 font-semibold text-bglighter"
                 onClick={() => onApply()}
               >
                 絞り込む
@@ -447,11 +423,11 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
       <div
         className={
           openFilter
-            ? `fixed top-0 right-0 w-full h-screen bg-bglight z-50 xl:hidden ease-in duration-300 overflow-y-scroll md:p-8`
-            : `fixed top-[-100%] right-0 w-full h-screen bg-bglight z-50 xl:hidden ease-in duration-300 overflow-y-scroll md:p-8`
+            ? `fixed right-0 top-0 z-50 h-screen w-full overflow-y-scroll bg-bglight duration-300 ease-in md:p-8 xl:hidden`
+            : `fixed right-[-100%] top-0 z-50 h-screen w-full overflow-y-scroll bg-bglight duration-300 ease-in md:p-8 xl:hidden`
         }
       >
-        <div className="w-full p-6 flex justify-end">
+        <div className="flex w-full justify-end p-6">
           <button onClick={() => setOpenFilter(false)}>
             <IoClose size={32} />
           </button>
@@ -465,10 +441,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                   className="flex items-center gap-7 px-1"
                   onClick={() => setMovementOpen((prev) => !prev)}
                 >
-                  <h2 className="font-bold relative">
+                  <h2 className="relative font-bold">
                     ムーブメント
                     {movement.length > 0 && (
-                      <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-[-0.875rem] right-[-0.875rem]">
+                      <div className="absolute right-[-0.875rem] top-[-0.875rem] flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                         {movement.length}
                       </div>
                     )}
@@ -477,24 +453,22 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     size={30}
                     className={
                       !movementOpen
-                        ? `rotate-180 ease-in duration-200`
-                        : `rotate-0 ease-in duration-200`
+                        ? `rotate-180 duration-200 ease-in`
+                        : `rotate-0 duration-200 ease-in`
                     }
                   />
                 </button>
                 <div
                   className={
                     movementOpen
-                      ? `h-max ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-8 opacity-100`
-                      : "h-0 ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-0 opacity-0 overflow-hidden"
+                      ? `mt-8 grid h-max grid-cols-2 gap-3 opacity-100 duration-200 ease-in md:grid-cols-3`
+                      : "mt-0 grid h-0 grid-cols-2 gap-3 overflow-hidden opacity-0 duration-200 ease-in md:grid-cols-3"
                   }
                 >
                   {movements.map((data) => (
                     <button
                       key={data.value}
-                      className={`
-                        text-sm py-4 shadow-sm rounded-lg border border-foreground
-                      ${
+                      className={`rounded-lg border border-foreground py-4 text-sm shadow-sm ${
                         movement.includes(data.value)
                           ? "bg-foreground text-background"
                           : "bg-transparent text-foreground"
@@ -514,10 +488,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                   className="flex items-center gap-7 px-1"
                   onClick={() => setCaseTypeOpen((prev) => !prev)}
                 >
-                  <h2 className="font-bold relative">
+                  <h2 className="relative font-bold">
                     ケースの種類
                     {caseType.length > 0 && (
-                      <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-[-0.875rem] right-[-0.875rem]">
+                      <div className="absolute right-[-0.875rem] top-[-0.875rem] flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                         {caseType.length}
                       </div>
                     )}
@@ -526,24 +500,22 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     size={30}
                     className={
                       !caseTypeOpen
-                        ? `rotate-180 ease-in duration-200`
-                        : `rotate-0 ease-in duration-200`
+                        ? `rotate-180 duration-200 ease-in`
+                        : `rotate-0 duration-200 ease-in`
                     }
                   />
                 </button>
                 <div
                   className={
                     caseTypeOpen
-                      ? `h-max ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-8 opacity-100`
-                      : "h-0 ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-0 opacity-0 overflow-hidden"
+                      ? `mt-8 grid h-max grid-cols-2 gap-3 opacity-100 duration-200 ease-in md:grid-cols-3`
+                      : "mt-0 grid h-0 grid-cols-2 gap-3 overflow-hidden opacity-0 duration-200 ease-in md:grid-cols-3"
                   }
                 >
                   {caseTypes.map((data) => (
                     <button
                       key={data.value}
-                      className={`
-                        text-sm py-4 shadow-sm rounded-lg border border-foreground
-                      ${
+                      className={`rounded-lg border border-foreground py-4 text-sm shadow-sm ${
                         caseType.includes(data.value)
                           ? "bg-foreground text-background"
                           : "bg-transparent text-foreground"
@@ -563,10 +535,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                   className="flex items-center gap-7 px-1"
                   onClick={() => setCaseColorOpen((prev) => !prev)}
                 >
-                  <h2 className="font-bold relative">
+                  <h2 className="relative font-bold">
                     ケースの色
                     {caseColor.length > 0 && (
-                      <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-[-0.875rem] right-[-0.875rem]">
+                      <div className="absolute right-[-0.875rem] top-[-0.875rem] flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                         {caseColor.length}
                       </div>
                     )}
@@ -575,24 +547,22 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     size={30}
                     className={
                       !caseColorOpen
-                        ? `rotate-180 ease-in duration-200`
-                        : `rotate-0 ease-in duration-200`
+                        ? `rotate-180 duration-200 ease-in`
+                        : `rotate-0 duration-200 ease-in`
                     }
                   />
                 </button>
                 <div
                   className={
                     caseColorOpen
-                      ? `h-max ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-8 opacity-100`
-                      : "h-0 ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-0 opacity-0 overflow-hidden"
+                      ? `mt-8 grid h-max grid-cols-2 gap-3 opacity-100 duration-200 ease-in md:grid-cols-3`
+                      : "mt-0 grid h-0 grid-cols-2 gap-3 overflow-hidden opacity-0 duration-200 ease-in md:grid-cols-3"
                   }
                 >
                   {caseColors.map((data) => (
                     <button
                       key={data.value}
-                      className={`
-                        text-sm py-4 shadow-sm rounded-lg border border-foreground flex justify-center items-center gap-4
-                      ${
+                      className={`flex items-center justify-center gap-4 rounded-lg border border-foreground py-4 text-sm shadow-sm ${
                         caseColor.includes(data.value)
                           ? "bg-foreground text-background"
                           : "bg-transparent text-foreground"
@@ -603,17 +573,11 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     >
                       {data.name_ja}
                       <div
-                        className={`
-                        w-6
-                        h-6
-                        rounded-full
-                        border-2
-                        ${
+                        className={`h-6 w-6 rounded-full border-2 ${
                           caseColor.includes(data.value)
                             ? "border-background"
                             : "border-foreground"
-                        }
-                      `}
+                        } `}
                         style={{ backgroundColor: data.hexValue }}
                       />
                     </button>
@@ -626,10 +590,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                   className="flex items-center gap-7 px-1"
                   onClick={() => setFaceColorOpen((prev) => !prev)}
                 >
-                  <h2 className="font-bold relative">
+                  <h2 className="relative font-bold">
                     文字盤の色
                     {faceColor.length > 0 && (
-                      <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-[-0.875rem] right-[-0.875rem]">
+                      <div className="absolute right-[-0.875rem] top-[-0.875rem] flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                         {faceColor.length}
                       </div>
                     )}
@@ -638,24 +602,22 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     size={30}
                     className={
                       !faceColorOpen
-                        ? `rotate-180 ease-in duration-200`
-                        : `rotate-0 ease-in duration-200`
+                        ? `rotate-180 duration-200 ease-in`
+                        : `rotate-0 duration-200 ease-in`
                     }
                   />
                 </button>
                 <div
                   className={
                     faceColorOpen
-                      ? `h-max ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-8 opacity-100`
-                      : "h-0 ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-0 opacity-0 overflow-hidden"
+                      ? `mt-8 grid h-max grid-cols-2 gap-3 opacity-100 duration-200 ease-in md:grid-cols-3`
+                      : "mt-0 grid h-0 grid-cols-2 gap-3 overflow-hidden opacity-0 duration-200 ease-in md:grid-cols-3"
                   }
                 >
                   {faceColors.map((data) => (
                     <button
                       key={data.value}
-                      className={`
-                        text-sm py-4 shadow-sm rounded-lg border border-foreground flex justify-center items-center gap-4
-                      ${
+                      className={`flex items-center justify-center gap-4 rounded-lg border border-foreground py-4 text-sm shadow-sm ${
                         faceColor.includes(data.value)
                           ? "bg-foreground text-background"
                           : "bg-transparent text-foreground"
@@ -666,17 +628,11 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     >
                       {data.name_ja}
                       <div
-                        className={`
-                        w-6
-                        h-6
-                        rounded-full
-                        border-2
-                        ${
+                        className={`h-6 w-6 rounded-full border-2 ${
                           faceColor.includes(data.value)
                             ? "border-background"
                             : "border-foreground"
-                        }
-                      `}
+                        } `}
                         style={{ backgroundColor: data.hexValue }}
                       />
                     </button>
@@ -693,10 +649,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                   className="flex items-center gap-7 px-1"
                   onClick={() => setBandTypeOpen((prev) => !prev)}
                 >
-                  <h2 className="font-bold relative">
+                  <h2 className="relative font-bold">
                     バンドの種類
                     {bandType.length > 0 && (
-                      <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-[-0.875rem] right-[-0.875rem]">
+                      <div className="absolute right-[-0.875rem] top-[-0.875rem] flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                         {bandType.length}
                       </div>
                     )}
@@ -705,24 +661,22 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                     size={30}
                     className={
                       !bandTypeOpen
-                        ? `rotate-180 ease-in duration-200`
-                        : `rotate-0 ease-in duration-200`
+                        ? `rotate-180 duration-200 ease-in`
+                        : `rotate-0 duration-200 ease-in`
                     }
                   />
                 </button>
                 <div
                   className={
                     bandTypeOpen
-                      ? `h-max ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-8 opacity-100`
-                      : "h-0 ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-0 opacity-0 overflow-hidden"
+                      ? `mt-8 grid h-max grid-cols-2 gap-3 opacity-100 duration-200 ease-in md:grid-cols-3`
+                      : "mt-0 grid h-0 grid-cols-2 gap-3 overflow-hidden opacity-0 duration-200 ease-in md:grid-cols-3"
                   }
                 >
                   {bandTypes.map((data) => (
                     <button
                       key={data.value}
-                      className={`
-                        text-sm py-4 shadow-sm rounded-lg border border-foreground
-                      ${
+                      className={`rounded-lg border border-foreground py-4 text-sm shadow-sm ${
                         bandType.includes(data.value)
                           ? "bg-foreground text-background"
                           : "bg-transparent text-foreground"
@@ -742,10 +696,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
               className="flex items-center gap-7 px-1"
               onClick={() => setStockOpen((prev) => !prev)}
             >
-              <h2 className="font-bold relative">
+              <h2 className="relative font-bold">
                 在庫状況
                 {instock && (
-                  <div className="w-5 h-5 rounded-full bg-red text-xs font-semibold text-background flex items-center justify-center text-center absolute top-[-0.875rem] right-[-0.875rem]">
+                  <div className="absolute right-[-0.875rem] top-[-0.875rem] flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs font-semibold text-background">
                     1
                   </div>
                 )}
@@ -754,26 +708,24 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
                 size={30}
                 className={
                   !stockOpen
-                    ? `rotate-180 ease-in duration-200`
-                    : `rotate-0 ease-in duration-200`
+                    ? `rotate-180 duration-200 ease-in`
+                    : `rotate-0 duration-200 ease-in`
                 }
               />
             </button>
             <div
               className={
                 stockOpen
-                  ? `h-max ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-8 opacity-100`
-                  : "h-0 ease-in duration-200 grid grid-cols-2 md:grid-cols-3 gap-3 mt-0 opacity-0 overflow-hidden"
+                  ? `mt-8 grid h-max grid-cols-2 gap-3 opacity-100 duration-200 ease-in md:grid-cols-3`
+                  : "mt-0 grid h-0 grid-cols-2 gap-3 overflow-hidden opacity-0 duration-200 ease-in md:grid-cols-3"
               }
             >
               <button
-                className={`
-                        text-sm py-4 shadow-sm rounded-lg border border-foreground
-                      ${
-                        instock
-                          ? "bg-foreground text-background"
-                          : "bg-transparent text-foreground"
-                      }`}
+                className={`rounded-lg border border-foreground py-4 text-sm shadow-sm ${
+                  instock
+                    ? "bg-foreground text-background"
+                    : "bg-transparent text-foreground"
+                }`}
                 onClick={() => setInstock((prev) => !prev)}
               >
                 在庫ありのみ表示
@@ -785,24 +737,24 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
         <div
           className={
             openFilter
-              ? `fixed bottom-0 right-0 w-screen h-20 bg-bglighter z-[51] xl:hidden ease-out duration-500 shadow-[0px_0px_30px_rgba(0,0,0,0.1)]`
-              : `fixed bottom-[-100%] right-0 w-screen h-20 bg-bglighter z-[51] xl:hidden ease-out duration-500`
+              ? `fixed bottom-0 right-0 z-[51] h-20 w-screen bg-bglighter shadow-[0px_0px_30px_rgba(0,0,0,0.1)] duration-500 ease-out xl:hidden`
+              : `fixed bottom-[-100%] right-0 z-[51] h-20 w-screen bg-bglighter duration-500 ease-out xl:hidden`
           }
         >
-          <div className="w-full h-full flex justify-center gap-6 items-center">
+          <div className="flex h-full w-full items-center justify-center gap-6">
             <button
-              className="font-semibold border-2 border-red px-10 py-3 rounded-full text-red text-sm relative"
+              className="relative rounded-full border-2 border-red px-10 py-3 text-sm font-semibold text-red"
               onClick={() => onReset()}
             >
               リセット
               {filterCount > 0 && (
-                <div className="bg-red w-5 h-5 rounded-full absolute right-[-0.313rem] top-[-0.313rem] flex items-center justify-center text-center text-background text-xs">
+                <div className="absolute right-[-0.313rem] top-[-0.313rem] flex h-5 w-5 items-center justify-center rounded-full bg-red text-center text-xs text-background">
                   {filterCount}
                 </div>
               )}
             </button>
             <button
-              className="font-semibold border-2 border-foreground px-10 py-3 rounded-full bg-foreground text-bglighter text-sm"
+              className="rounded-full border-2 border-foreground bg-foreground px-10 py-3 text-sm font-semibold text-bglighter"
               onClick={() => onApply()}
             >
               絞り込む
