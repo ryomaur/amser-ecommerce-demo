@@ -44,6 +44,14 @@ const AdminBandDetailPage: React.FC<AdminBandDetailPageProps> = async ({
               <div>{product.description}</div>
             </div>
             <div className="flex items-center gap-5 text-sm">
+              <div className="text-sm">価格：</div>
+              <div>{product.price}</div>
+            </div>
+            <div className="flex items-center gap-5 text-sm">
+              <div className="text-sm">在庫：</div>
+              <div>{product.stock}</div>
+            </div>
+            <div className="flex items-center gap-5 text-sm">
               <div className="text-sm">バンドの種類：</div>
               <div>{product.bandType_ja}</div>
             </div>

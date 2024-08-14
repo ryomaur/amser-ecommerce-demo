@@ -48,6 +48,10 @@ const AdminWatchDetailPage: React.FC<AdminWatchDetailPageProps> = async ({
               <div>{product.price}</div>
             </div>
             <div className="flex items-center gap-5 text-sm">
+              <div className="text-sm">在庫：</div>
+              <div>{product.stock}</div>
+            </div>
+            <div className="flex items-center gap-5 text-sm">
               <div className="text-sm">ムーブメント：</div>
               <div>{product.movement_ja}</div>
             </div>
