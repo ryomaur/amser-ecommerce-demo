@@ -424,7 +424,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
         className={
           openFilter
             ? `fixed right-0 top-0 z-50 h-screen w-full overflow-y-scroll bg-bglight duration-300 ease-in md:p-8 xl:hidden`
-            : `fixed right-0 top-[-100%] -z-50 h-screen w-full overflow-y-scroll bg-bglight duration-300 ease-in md:p-8 xl:hidden`
+            : `fixed right-[-100%] top-0 z-50 h-screen w-full overflow-y-scroll bg-bglight duration-300 ease-in md:p-8 xl:hidden`
         }
       >
         <div className="flex w-full justify-end p-6">
@@ -738,7 +738,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories }) => {
           className={
             openFilter
               ? `fixed bottom-0 right-0 z-[51] h-20 w-screen bg-bglighter shadow-[0px_0px_30px_rgba(0,0,0,0.1)] duration-500 ease-out xl:hidden`
-              : `fixed bottom-[-100%] right-0 -z-[51] h-20 w-screen bg-bglighter duration-500 ease-out xl:hidden`
+              : `fixed bottom-[-100%] right-0 z-[51] h-20 w-screen bg-bglighter duration-500 ease-out xl:hidden`
           }
         >
           <div className="flex h-full w-full items-center justify-center gap-6">
