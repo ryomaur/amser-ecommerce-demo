@@ -7,7 +7,7 @@ const Questions = () => {
     {
       question: "このウェブサイトはなんですか？",
       answer:
-        "このサイトは私がフロントエンドスキルとバックエンドスキルのデモ用に作成したECサイトです。使用した技術やフレームワークはTypescript Next.js PostgreSQL Prisma Figmaなどです。詳しくはGithubページをご覧ください。https://github.com/ryomaur/amser-ecommerce-demo ",
+        "このサイトは私がフロントエンドスキルとバックエンドスキルのデモ用に作成したECサイトです。使用した技術やフレームワークはTypescript Next.js PostgreSQL Prisma Figmaなどです。詳しくはGithubページをご覧ください。https://github.com/ryomaur/amser-ecommerce-demo",
     },
     {
       question: "本当にこのブランドは存在するの？",
