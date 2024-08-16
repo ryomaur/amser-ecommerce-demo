@@ -12,13 +12,13 @@ export async function GET(req: NextRequest) {
   }
 
   const today = new Date();
-  const twoDaysAgo = today.setDate(today.getDate() - 2);
+  const oneWeekAgo = today.setDate(today.getDate() - 7);
 
   try {
     const deletedCarts = await prisma.cart.deleteMany({
       where: {
         updatedAt: {
-          lte: new Date(twoDaysAgo),
+          lte: new Date(oneWeekAgo),
         },
         userId: null,
       },
@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
     const deletedWishlists = await prisma.wishlist.deleteMany({
       where: {
         updatedAt: {
-          lte: new Date(twoDaysAgo),
+          lte: new Date(oneWeekAgo),
         },
         userId: null,
       },
