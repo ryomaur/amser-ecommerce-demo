@@ -60,13 +60,14 @@ const getTotalRevenue = async () => {
 const getMonthlyRevenue = async () => {
   const today = new Date();
   const startOfThisMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const endOfThisMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
   const orders = await prisma.order.findMany({
     where: {
       status: "支払い済み",
       createdAt: {
         gte: startOfThisMonth,
-        lte: today,
+        lte: endOfThisMonth,
       },
     },
   });
@@ -82,13 +83,14 @@ const getMonthlyRevenue = async () => {
 const getMonthlyOrderCount = async () => {
   const today = new Date();
   const startOfThisMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const endOfThisMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
   const orderCount = await prisma.order.count({
     where: {
       status: "支払い済み",
       createdAt: {
         gte: startOfThisMonth,
-        lte: today,
+        lte: endOfThisMonth,
       },
     },
   });
@@ -99,12 +101,13 @@ const getMonthlyOrderCount = async () => {
 const getMonthlyUserCount = async () => {
   const today = new Date();
   const startOfThisMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const endOfThisMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
   const userCount = await prisma.user.count({
     where: {
       createdAt: {
         gte: startOfThisMonth,
-        lte: today,
+        lte: endOfThisMonth,
       },
     },
   });
