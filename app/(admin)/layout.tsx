@@ -46,7 +46,7 @@ export default function AdminPageLayout({
         <ToasterProvider />
         <div className="relative h-full w-full lg:flex">
           <Sidebar />
-          <main className="h-full w-full overflow-y-scroll px-5 py-20 font-sans sm:px-10 lg:px-20 lg:py-12">
+          <main className="h-full w-full overflow-x-hidden overflow-y-scroll px-5 py-20 font-sans sm:px-10 lg:px-20 lg:py-12">
             {children}
           </main>
         </div>
