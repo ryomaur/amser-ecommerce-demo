@@ -130,8 +130,11 @@ const AdminPage = async () => {
   const graphData = await getRevenueGraphData();
 
   return (
-    <section className="my-7 mr-7 w-full">
-      <div className="grid w-full grid-cols-3 justify-between gap-5 py-5">
+    <section className="mb-7 mr-7 mt-0 w-full">
+      <h1 className="pb-8 text-center text-2xl font-bold text-foreground lg:hidden">
+        ダッシュボード
+      </h1>
+      <div className="grid w-full grid-cols-1 justify-between gap-5 pb-5 pt-5 md:grid-cols-3 md:pt-0">
         <DashboardCard
           title="今月の収益"
           icon={<FaYenSign size={28} className="text-foreground/70" />}
@@ -147,8 +150,8 @@ const AdminPage = async () => {
           icon={<FaUser size={28} className="text-foreground/70" />}
           content={`${monthlyNewUserCount.toLocaleString()}`}
         />
-        <div className="col-span-3 flex w-full flex-col gap-12 rounded-lg border-2 border-foreground/30 p-8 pt-12 text-foreground shadow-sm">
-          <h1 className="text-2xl font-bold">月ごとの収益</h1>
+        <div className="flex w-full flex-col gap-12 rounded-lg border-2 border-foreground/30 px-4 py-8 pt-12 text-foreground shadow-sm sm:px-8 md:col-span-3">
+          <h1 className="px-4 text-2xl font-bold sm:px-0">月ごとの収益</h1>
           <RevenueGraph data={graphData} />
         </div>
         <DashboardCard

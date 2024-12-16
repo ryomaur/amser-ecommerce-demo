@@ -36,8 +36,8 @@ const AdminOrderDetailPage: React.FC<AdminOrderDetailPageProps> = async ({
 
   return (
     <div className="w-full">
-      <div className="w-full rounded-2xl bg-bglighter">
-        <div className="mx-auto w-full rounded-lg bg-transparent px-20 py-12 shadow-none">
+      <div className="w-full rounded-2xl bg-transparent md:bg-bglighter">
+        <div className="mx-auto w-full rounded-lg bg-transparent px-0 py-12 shadow-none sm:px-4 md:px-14 lg:px-20">
           <h1 className="text-center text-2xl font-bold text-foreground">
             注文の詳細
           </h1>

@@ -216,11 +216,11 @@ const AdminWatchTable: React.FC<WatchTableProps> = ({ watches }) => {
             type="text"
             value={filtering}
             onChange={(e) => setFiltering(e.target.value)}
-            className="rounded-lg border border-foreground bg-transparent px-4 py-2 text-sm outline-none focus:outline-none"
+            className="w-full rounded-lg border border-foreground bg-transparent px-4 py-2 text-sm outline-none focus:outline-none"
           />
           <IoSearch size={20} className="text-foreground" />
         </div>
-        <div className="flex items-center gap-3 px-5 text-sm text-foreground">
+        <div className="flex items-center gap-3 text-nowrap px-5 text-xs text-foreground md:text-sm">
           表示：
           <select
             value={table.getState().pagination.pageSize}

@@ -28,7 +28,7 @@ const AdminBandDetailPage: React.FC<AdminBandDetailPageProps> = async ({
   return (
     <div className="w-full">
       <div className="w-full">
-        <div className="mx-auto w-full rounded-lg bg-transparent px-20 py-12 shadow-none">
+        <div className="mx-auto w-full rounded-lg bg-transparent px-8 py-12 shadow-none md:px-20">
           <h1 className="text-xl font-bold text-foreground">バンドの詳細</h1>
           <div className="my-7 flex flex-col gap-2 font-medium text-foreground/90">
             <div className="flex items-center gap-5 text-sm">

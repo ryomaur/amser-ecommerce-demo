@@ -10,7 +10,7 @@ const AddBandPage = async () => {
 
   return (
     <div className="w-full">
-      <div className="mx-auto max-w-[800px] rounded-lg bg-transparent px-20 py-8 shadow-none">
+      <div className="mx-auto max-w-[800px] rounded-lg bg-transparent px-5 py-8 shadow-none md:px-20">
         <h1 className="text-center text-2xl font-bold text-foreground">
           バンドを追加する
         </h1>

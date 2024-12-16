@@ -235,9 +235,11 @@ const EditWatchForm: React.FC<EditWatchFormProps> = ({
           )}
         </div>
 
-        <div className="flex w-full justify-start gap-8">
+        <div className="flex w-full flex-col justify-start gap-8 sm:flex-row">
           <div className="flex flex-col justify-center gap-3">
-            <h2 className="font-semibold">メインの商品画像 （必須）</h2>
+            <h2 className="text-center font-semibold">
+              メインの商品画像 （必須）
+            </h2>
             <ImageUploadWidget
               onChange={(e) => {
                 setValue("mainImage", e);
@@ -248,7 +250,9 @@ const EditWatchForm: React.FC<EditWatchFormProps> = ({
             />
           </div>
           <div className="flex flex-col justify-center gap-3">
-            <h2 className="font-semibold">詳細の商品画像 （必須）</h2>
+            <h2 className="text-center font-semibold">
+              詳細の商品画像 （必須）
+            </h2>
             <ImageUploadWidget
               onChange={(e) => {
                 setValue("image", e);
@@ -260,7 +264,7 @@ const EditWatchForm: React.FC<EditWatchFormProps> = ({
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-2 gap-x-8 gap-y-10">
+        <div className="grid w-full grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
           <div className="w-full">
             <label className="px-2 font-semibold">価格 ¥</label>
             <input
@@ -380,13 +384,6 @@ const EditWatchForm: React.FC<EditWatchFormProps> = ({
               {...register("faceColor")}
               className="mt-3 w-full appearance-none rounded-lg border-2 border-foreground bg-transparent py-3 pl-4 pr-7 text-sm outline-none transition disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {/* <option value="white">ホワイト</option>
-              <option value="beige">ベージュ</option>
-              <option value="yellow">イエロー</option>
-              <option value="black">ブラック</option>
-              <option value="green">グリーン</option>
-              <option value="red">レッド</option>
-              <option value="blue">ブルー</option> */}
               {faceColors.map((data) => (
                 <option key={data.value} value={data.value}>
                   {data.name_ja}
@@ -408,8 +405,6 @@ const EditWatchForm: React.FC<EditWatchFormProps> = ({
               {...register("bandType")}
               className="mt-3 w-full appearance-none rounded-lg border-2 border-foreground bg-transparent py-3 pl-4 pr-7 text-sm outline-none transition disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {/* <option value="leather">レザー</option>
-              <option value="military">ミリタリー</option> */}
               {bandTypes.map((data) => (
                 <option key={data.value} value={data.value}>
                   {data.name_ja}
@@ -429,7 +424,7 @@ const EditWatchForm: React.FC<EditWatchFormProps> = ({
             商品を非表示にする（商品ページに表示しない）
           </label>
           <div className="mt-3 flex items-center justify-center gap-3 rounded-lg border-2 border-foreground px-4 py-3">
-            <span className="text-sm">表示する</span>
+            <span className="text-xs md:text-sm">表示する</span>
             <BiSolidShow size={25} />
             <Switch
               defaultChecked={isHidden}
@@ -454,7 +449,7 @@ const EditWatchForm: React.FC<EditWatchFormProps> = ({
               )}
             </Switch>
             <BiSolidHide size={25} />
-            <span className="text-sm">非表示</span>
+            <span className="text-xs md:text-sm">非表示</span>
           </div>
         </div>
 

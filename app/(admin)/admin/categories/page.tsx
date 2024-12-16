@@ -14,7 +14,7 @@ const AdminCategoriesPage = async () => {
       <section className="w-full">
         <h1 className="text-2xl font-bold">時計</h1>
 
-        <div className="mt-8 grid grid-cols-2 gap-12">
+        <div className="mt-8 grid grid-cols-1 gap-12 md:grid-cols-2">
           <div className="flex-col items-center justify-center">
             <div className="flex items-center gap-5">
               <h2 className="text-lg font-semibold">ムーブメント</h2>
@@ -115,7 +115,7 @@ const AdminCategoriesPage = async () => {
       <section className="mt-14 w-full">
         <h1 className="text-2xl font-bold">バンド</h1>
 
-        <div className="mt-8 grid grid-cols-2 gap-12">
+        <div className="mt-8 grid grid-cols-1 gap-12 md:grid-cols-2">
           <div className="flex-col items-center justify-center">
             <div className="flex items-center gap-5">
               <h2 className="text-lg font-semibold">バンドの種類</h2>

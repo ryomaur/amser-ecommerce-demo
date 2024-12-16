@@ -41,12 +41,12 @@ export default function AdminPageLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${notoSansJP.variable} ${shareTechMono.variable} bg-background font-sans`}
+        className={`${inter.variable} ${notoSansJP.variable} ${shareTechMono.variable} h-dvh bg-background font-sans`}
       >
         <ToasterProvider />
-        <div className="flex h-full w-full">
+        <div className="relative h-full w-full lg:flex">
           <Sidebar />
-          <main className="h-screen w-full overflow-y-scroll px-20 py-8 font-sans">
+          <main className="h-full w-full overflow-y-scroll px-5 py-20 font-sans sm:px-10 lg:px-20 lg:py-12">
             {children}
           </main>
         </div>

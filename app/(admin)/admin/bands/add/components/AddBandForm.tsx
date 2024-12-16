@@ -121,7 +121,7 @@ const AddBandForm: React.FC<AddBandFormProps> = ({ categories }) => {
           />
         </div>
 
-        <div className="flex w-full justify-start gap-8">
+        <div className="flex w-full gap-8 sm:justify-start">
           <div className="flex flex-col justify-center gap-3">
             <h2 className="font-semibold">商品画像</h2>
             <ImageUploadWidget
@@ -134,7 +134,7 @@ const AddBandForm: React.FC<AddBandFormProps> = ({ categories }) => {
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-2 gap-x-8 gap-y-10">
+        <div className="grid w-full grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
           <div className="w-full">
             <label className="px-2 font-semibold">価格 ¥</label>
             <input
@@ -186,7 +186,7 @@ const AddBandForm: React.FC<AddBandFormProps> = ({ categories }) => {
             商品を非表示にする（商品ページに表示しない）
           </label>
           <div className="mt-3 flex items-center justify-center gap-3 rounded-lg border-2 border-foreground px-4 py-3">
-            <span className="text-sm">表示する</span>
+            <span className="text-xs md:text-sm">表示する</span>
             <BiSolidShow size={25} />
             <Switch
               defaultChecked={isHidden}
@@ -211,7 +211,7 @@ const AddBandForm: React.FC<AddBandFormProps> = ({ categories }) => {
               )}
             </Switch>
             <BiSolidHide size={25} />
-            <span className="text-sm">非表示</span>
+            <span className="text-xs md:text-sm">非表示</span>
           </div>
         </div>
 

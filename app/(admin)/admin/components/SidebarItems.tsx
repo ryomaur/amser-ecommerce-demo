@@ -7,8 +7,13 @@ import toast from "react-hot-toast";
 import { LuLogOut } from "react-icons/lu";
 import { MdSpaceDashboard } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import React, { Dispatch, SetStateAction } from "react";
 
-const SidebarItems = () => {
+interface SidebarItemsProps {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const SidebarItems: React.FC<SidebarItemsProps> = ({ setIsOpen }) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -43,8 +48,12 @@ const SidebarItems = () => {
   return (
     <div className="mt-10 flex h-full flex-col px-8">
       <div className="border-b-2 border-neutral-300 py-3">
-        <Link
-          href={"/admin"}
+        <button
+          onClick={() => {
+            setIsOpen(false);
+            router.push("/admin");
+            router.refresh();
+          }}
           className={` ${
             pathname === "/admin"
               ? "flex items-center gap-5 rounded-lg bg-foreground/5 px-3 py-2 text-sm font-bold"
@@ -53,15 +62,19 @@ const SidebarItems = () => {
         >
           <MdSpaceDashboard size={16} />
           ダッシュボード
-        </Link>
+        </button>
       </div>
 
-      <div className="mt-7 flex h-full flex-col justify-between">
+      <div className="mt-7 flex h-full flex-grow flex-col justify-between">
         <div className="mt-5 flex flex-col gap-3">
           {routes.map((route) => (
-            <Link
-              href={route.href}
-              className={` ${
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                router.push(route.href);
+                router.refresh();
+              }}
+              className={`text-left ${
                 route.active
                   ? "rounded-lg bg-foreground/5 px-5 py-2 text-sm font-bold"
                   : "rounded-lg px-5 py-2 text-sm font-medium text-foreground hover:bg-foreground/10"
@@ -69,7 +82,7 @@ const SidebarItems = () => {
               key={route.href}
             >
               {route.label}
-            </Link>
+            </button>
           ))}
         </div>
 

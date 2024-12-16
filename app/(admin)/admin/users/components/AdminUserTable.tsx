@@ -138,11 +138,11 @@ const AdminUserTable: React.FC<AdminUserTableProps> = ({ users }) => {
             type="text"
             value={filtering}
             onChange={(e) => setFiltering(e.target.value)}
-            className="rounded-lg border border-foreground bg-transparent px-4 py-2 text-sm outline-none focus:outline-none"
+            className="w-full rounded-lg border border-foreground bg-transparent px-4 py-2 text-sm outline-none focus:outline-none"
           />
           <IoSearch size={20} className="text-foreground" />
         </div>
-        <div className="flex items-center gap-3 px-5 text-sm text-foreground">
+        <div className="flex items-center gap-3 text-nowrap px-5 text-xs text-foreground md:text-sm">
           表示：
           <select
             value={table.getState().pagination.pageSize}
@@ -173,7 +173,7 @@ const AdminUserTable: React.FC<AdminUserTableProps> = ({ users }) => {
                 return (
                   <th
                     key={header.id}
-                    className="sticky top-0 z-10 border-collapse bg-foreground py-3 pl-6 pr-4 text-[0.813rem] font-medium text-background first:left-0 first:z-20"
+                    className="sticky top-0 z-10 border-collapse bg-foreground py-3 pl-6 pr-4 text-[0.813rem] font-medium text-background md:first:left-0 md:first:z-20"
                     onClick={header.column.getToggleSortingHandler()}
                   >
                     {header.isPlaceholder ? null : (
@@ -197,7 +197,7 @@ const AdminUserTable: React.FC<AdminUserTableProps> = ({ users }) => {
                   return index === 0 ? (
                     <th
                       key={cell.id}
-                      className="box-border border-collapse bg-background py-3 pl-6 pr-4 text-[0.813rem] text-foreground/85 shadow-[inset_0_-1px_0_lightgray] first:sticky first:left-0 first:z-10 first:font-medium first:shadow-[inset_-1px_-1px_0_lightgray]"
+                      className="box-border border-collapse bg-background py-3 pl-6 pr-4 text-[0.813rem] text-foreground/85 shadow-[inset_0_-1px_0_lightgray] md:first:sticky md:first:left-0 md:first:z-10 md:first:font-medium md:first:shadow-[inset_-1px_-1px_0_lightgray]"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
