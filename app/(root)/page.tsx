@@ -2,6 +2,7 @@ import { getWishlist } from "@/actions/wishlist";
 import HeroSlider from "@/components/HeroSlider";
 import ProductCard from "@/components/ProductCard";
 import prisma from "@/lib/db";
+import Image from "next/image";
 import Link from "next/link";
 
 const getNewProducts = async () => {
@@ -52,7 +53,36 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-bglighter py-32 xl:mt-20">
+      <section className="h-max w-full bg-[#121212] py-20 lg:py-16 xl:mt-20">
+        <div className="mx-auto h-max max-w-[1920px] md:px-20">
+          <div className="flex flex-col items-center justify-center gap-6 lg:flex-row lg:gap-24">
+            <div className="flex h-auto w-[90%] items-center justify-center md:w-[70%] lg:w-[28%]">
+              <Image
+                src={
+                  "https://swhnoabqzwrjxdrv.public.blob.vercel-storage.com/movement-OksH5bAMwLtjPa6YqJNGoMuK4pVLej.webp"
+                }
+                alt="ムーブメント画像"
+                sizes="(max-width: 768px) 90vw, 50vw"
+                className="object-cover"
+                height={702}
+                width={920}
+                quality={90}
+              />
+            </div>
+            <div className="flex flex-col items-center justify-center gap-5">
+              <h2 className="text-xl font-bold text-background">
+                Amserの自社製ムーブメント
+              </h2>
+              <Link href={"/movement"}>
+                <h2 className="rounded-full border border-background px-10 py-2 text-sm font-medium text-background transition duration-300 hover:bg-background hover:text-foreground">
+                  特設ページを見る
+                </h2>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="w-full bg-bglighter py-32">
         <div className="mx-auto w-full max-w-[1600px] px-12">
           <div className="flex flex-col items-center justify-center gap-8">
             <h1 className="text-center font-sans text-3xl font-bold">

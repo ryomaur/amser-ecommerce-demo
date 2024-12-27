@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import TechnologyButton from "./components/TechnologyButton";
 import Questions from "./components/Questions";
+import { IoArrowForwardOutline } from "react-icons/io5";
+import Link from "next/link";
 
 export const metadata = {
   title: "Amserについて | Amser",
@@ -81,11 +83,18 @@ const BrandPage = () => {
             />
             <div className="flex max-w-96 flex-col gap-5">
               <h2 className="text-center text-xl font-bold md:text-left md:text-4xl">
-                品質と価格
+                自社製ムーブメント
               </h2>
               <p className="text-sm md:text-base">
-                伝統的な職人技と最新の技術を融合し、自社製ムーブメントを用いた高品質な時計をリーズナブルな価格で提供しています。
+                独自の機構を採用した革新的な自社製ムーブメント
               </p>
+              <Link
+                href={"/movement"}
+                className="flex items-center justify-center gap-1 font-medium text-foreground"
+              >
+                さらに詳しく
+                <IoArrowForwardOutline size={16} />
+              </Link>
             </div>
           </div>
         </div>

@@ -1,0 +1,143 @@
+.movement-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.canvas-container {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  background-color: #e9e9e9;
+  width: 50%;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: end;
+  align-items: center;
+}
+
+.canvas {
+  object-fit: contain;
+  width: 85%;
+  height: auto;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 1.25rem;
+}
+
+.heading {
+  padding-top: 0;
+  margin: 0 0;
+  padding-right: 3.5rem;
+}
+
+.texts {
+  margin: 0 0;
+  max-width: 480px;
+  padding-right: 3.5rem;
+  max-width: 30rem;
+}
+
+.final-heading-container {
+  align-items: start;
+}
+
+.final-heading {
+  padding-top: 5rem;
+  text-align: center;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .movement-container {
+    flex-direction: column;
+  }
+  .canvas-container {
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    height: 55vh;
+  }
+
+  .canvas-container::after {
+    content: "";
+    position: absolute;
+    bottom: -8vh;
+    background: linear-gradient(180deg, #e9e9e9 5%, rgba(0, 0, 0, 0) 100%);
+    height: 8vh;
+    width: 100%;
+  }
+
+  .canvas {
+    height: 95%;
+    width: auto;
+  }
+
+  .description-container {
+    width: 100%;
+  }
+
+  .heading {
+    padding-top: 55vh;
+    margin: 0 auto;
+    padding-right: 0;
+  }
+
+  .texts {
+    margin: 0 auto;
+    padding-right: 0;
+  }
+
+  .final-heading-container {
+    align-items: center;
+  }
+
+  .final-heading {
+    padding-top: 55vh;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    .heading {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    .texts {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .final-heading {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+  }
+}
+
+@media (max-aspect-ratio: 0.5/1) {
+  .canvas-container {
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+  }
+
+  .canvas {
+    height: auto;
+    width: 100%;
+  }
+}
