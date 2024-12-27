@@ -2,7 +2,7 @@
 
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import "./movementPage.css";
 
@@ -44,10 +44,12 @@ export default function MovementPage() {
   const frames = useMemo(() => {
     const loadedFrames: HTMLImageElement[] = [];
 
-    for (let i = 1; i <= totalFrame; i++) {
-      const img = new Image();
-      img.src = `https://swhnoabqzwrjxdrv.public.blob.vercel-storage.com/breakdown-animation-768/${i}.webp`;
-      loadedFrames.push(img);
+    if (typeof window !== "undefined") {
+      for (let i = 1; i <= totalFrame; i++) {
+        const img = new Image();
+        img.src = `https://swhnoabqzwrjxdrv.public.blob.vercel-storage.com/breakdown-animation-768/${i}.webp`;
+        loadedFrames.push(img);
+      }
     }
 
     return loadedFrames;
